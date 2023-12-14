@@ -1,10 +1,17 @@
 import { Layout } from '../../common'
-import './Home.module.css'
+import styles from "./Home.module.css";
+import { Search } from './homeComp'
 
 const Home = () => {
   return (
     <Layout>
-      <div>Home</div>
+      <div className={styles.container}>
+        <div>
+          <Search />
+        </div>
+      </div>
+
+
     </Layout>
   )
 }
