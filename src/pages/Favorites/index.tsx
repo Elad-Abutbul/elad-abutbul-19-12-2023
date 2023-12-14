@@ -1,8 +1,11 @@
+import { Layout } from '../../components'
 import './Favorites.module.css'
 
 const Favorites = () => {
      return (
-          <div>Favorites</div>
+          <Layout>
+               <div>Favorites</div>
+          </Layout>
      )
 }
 

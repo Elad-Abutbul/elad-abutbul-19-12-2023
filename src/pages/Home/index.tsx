@@ -1,8 +1,11 @@
+import { Layout } from '../../components'
 import './Home.module.css'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <Layout>
+      <div>Home</div>
+    </Layout>
   )
 }
 
