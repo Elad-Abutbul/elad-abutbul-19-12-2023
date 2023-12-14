@@ -1,9 +1,9 @@
-import { Layout } from "../../components"
+import { Layout } from "../../common"
 
 const NotFound = () => {
      return (
           <Layout>
-               <div>NotFound</div>
+               <div>Page Not Found 404..</div>
           </Layout>
      )
 }

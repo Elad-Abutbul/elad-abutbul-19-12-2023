@@ -1,4 +1,4 @@
-import { Layout } from '../../components'
+import { Layout } from '../../common'
 import './Favorites.module.css'
 
 const Favorites = () => {
