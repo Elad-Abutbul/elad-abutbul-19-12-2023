@@ -1,5 +1,3 @@
-export const App = () => {
-  return (
-    <div>App</div>
-  )
-}
+import { AppRouter } from "./components";
+
+export const App = () => (<AppRouter />)
