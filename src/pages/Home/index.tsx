@@ -4,14 +4,21 @@ import { Layout } from '../../common';
 import useGetCurrentWeather from '../../hooks/useGetCurrentWeather';
 import useGet5DaysWeather from '../../hooks/useGet5DaysWeather';
 import styles from "./Home.module.css";
-import { FaTimes } from 'react-icons/fa';
+
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState({});
   const { weather } = useGetCurrentWeather(selectedOption);
   const { fiveDaysWeather, getDayOfWeek, convertToFahrenheitToCelsius } = useGet5DaysWeather(selectedOption);
-  const tempC = weather && `${weather[0].Temperature.Imperial.Value} C°`;
-  const tempF = weather && `${weather[0].Temperature.Metric.Value} F°`;
+
+  const tempF = weather && `${weather[0].Temperature.Imperial.Value} F°`;
+  const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
+
+  const favoriteObject = {
+    id: selectedOption?.Key,
+    name: selectedOption?.LocalizedName,
+    weather: { temperature: { tempC, tempF } }
+  }
 
   return (
     <Layout>
@@ -27,7 +34,7 @@ const Home = () => {
                 <DeleteSearch setSelectedOption={setSelectedOption} />
                 <CurrentWeatherDetails cityName={selectedOption?.LocalizedName} tempC={tempC} />
               </div>
-              <FavoritesButton />
+              <FavoritesButton favoriteObject={favoriteObject} />
             </div>
 
             <DaysFeed days={fiveDaysWeather?.DailyForecasts} getDayOfWeek={getDayOfWeek} convertToFahrenheitToCelsius={convertToFahrenheitToCelsius} />
@@ -35,7 +42,7 @@ const Home = () => {
         )}
 
       </div>
-    </Layout>
+    </Layout >
   );
 }
 
