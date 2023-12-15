@@ -4,7 +4,7 @@ import useHandleAutoCompleteSearch from "../../../../hooks/useHandleAutoComplete
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-export const Search = ({ selectedOption }) => {
+export const Search = ({ setSelectedOption }) => {
   const [input, setInput] = useState<string>('');
   const { debounceValue } = useDebounce(input, 500);
   const { autoCompleteList, handleAutoCompleteSearch } = useHandleAutoCompleteSearch();
@@ -15,19 +15,18 @@ export const Search = ({ selectedOption }) => {
         await handleAutoCompleteSearch(debounceValue);
 
     };
+
     searchAuto();
   }, [debounceValue, input, handleAutoCompleteSearch]);
-
-
 
   return (
     <div>
       <Autocomplete
         options={autoCompleteList}
         getOptionLabel={(option) => option.LocalizedName}
-        isOptionEqualToValue={(option, value) => option.Key === value.Key} // Provide a custom comparison function
-        value={selectedOption}
+        isOptionEqualToValue={(option, value) => option.Key === value.Key}
         style={{ width: 300 }}
+        onChange={(e, selectedOption) => setSelectedOption(selectedOption)}
         renderInput={(params) => (
           <TextField
             {...params}
