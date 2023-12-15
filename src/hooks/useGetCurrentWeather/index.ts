@@ -14,7 +14,7 @@ const useGetCurrentWeather = (selectedOption) => {
   const { data: weather } = useQuery({
     queryKey: ["currentWeather", selectedOption?.Key],
     queryFn: getCurrentWeather,
-    enabled: !isNaN(selectedOption?.Key),
+    enabled: selectedOption?.Key !== undefined,
   });
 
   return { weather };
