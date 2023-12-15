@@ -11,7 +11,7 @@ const useGet5DaysWeather = (selectedOption) => {
     }
   };
 
-  const { data } = useQuery({
+  const { data:fiveDaysWeather } = useQuery({
     queryKey: ["5DaysWeather", selectedOption?.Key],
     queryFn: get5DaysWeather,
     enabled: selectedOption?.Key !== undefined,
@@ -36,6 +36,6 @@ const useGet5DaysWeather = (selectedOption) => {
     return `${(((fahrenheit - 32) * 5) / 9).toFixed()} C°`;
   };
 
-  return { data, getDayOfWeek, convertToFahrenheitToCelsius };
+  return { fiveDaysWeather, getDayOfWeek, convertToFahrenheitToCelsius };
 };
 export default useGet5DaysWeather;
