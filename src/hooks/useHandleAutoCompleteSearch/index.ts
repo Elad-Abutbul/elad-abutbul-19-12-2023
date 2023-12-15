@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useQuery } from "react-query";
 import { searchService } from "../../services/search";
+import useDebounce from "../useDebounce";
 
-const useHandleAutoCompleteSearch = () => {
-  const [autoCompleteList, setAutoCompleteList] = useState<Array<object>>([]);
-  const handleAutoCompleteSearch = async (input: string) => {
+const useHandleAutoCompleteSearch = (input: string) => {
+  const { debounceValue } = useDebounce(input, 500);
+
+  const handleAutoCompleteSearch = async () => {
     try {
-      const response = await searchService.autoComplete(input);
-      response && setAutoCompleteList(response.data);
+      const res = await searchService.autoComplete(debounceValue);
+      return res.data;
     } catch (error) {
       console.log(error);
+      return [];
     }
   };
-  return { autoCompleteList, handleAutoCompleteSearch };
+
+  const { data } = useQuery({
+    queryKey: ["autoComplete", debounceValue],
+    queryFn: handleAutoCompleteSearch,
+    enabled: debounceValue !== "",
+  });
+
+  return { data };
 };
+
 export default useHandleAutoCompleteSearch;
