@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import favoritesReducer from '../slices/favorites'
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    favorites: favoritesReducer,
+  },
 });
 export type RootState = ReturnType<typeof store.getState>;
 
