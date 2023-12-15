@@ -1,30 +1,15 @@
-import { useState, useEffect } from "react";
-import useDebounce from "../../../../hooks/useDebounce";
+import { useState } from "react";
 import useHandleAutoCompleteSearch from "../../../../hooks/useHandleAutoCompleteSearch";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
+import { Autocomplete, TextField } from "@mui/material";
 
 export const Search = ({ setSelectedOption }) => {
-  const [input, setInput] = useState<string>('');
-  const { debounceValue } = useDebounce(input, 500);
-  const { autoCompleteList, handleAutoCompleteSearch } = useHandleAutoCompleteSearch();
-
-  useEffect(() => {
-    const searchAuto = async () => {
-      if (debounceValue !== '' && input !== '')
-        await handleAutoCompleteSearch(debounceValue);
-
-    };
-
-    searchAuto();
-  }, [debounceValue, input, handleAutoCompleteSearch]);
-
+  const [input, setInput] = useState<string>("");
+  const { data } = useHandleAutoCompleteSearch(input);
   return (
     <div>
       <Autocomplete
-        options={autoCompleteList}
+        options={data || []}
         getOptionLabel={(option) => option.LocalizedName}
-        isOptionEqualToValue={(option, value) => option.Key === value.Key}
         style={{ width: 300 }}
         onChange={(e, selectedOption) => setSelectedOption(selectedOption)}
         renderInput={(params) => (

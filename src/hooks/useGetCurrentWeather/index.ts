@@ -1,16 +1,22 @@
-import { useState } from "react";
 import { weatherService } from "../../services/weather";
+import { useQuery } from "react-query";
 
-const useGetCurrentWeather = () => {
-  const [currentWeather, setCurrentWeather] = useState<object>([]);
-  const getCurrentWeather = async (loactionKey: number) => {
+const useGetCurrentWeather = (selectedOption) => {
+  const getCurrentWeather = async () => {
     try {
-      const res = await weatherService.getCurrentWeather(loactionKey);
-      res && setCurrentWeather(res.data);
+      const res = await weatherService.getCurrentWeather(selectedOption?.Key);
+      return res.data;
     } catch (error) {
       console.error(error);
     }
   };
-  return { currentWeather, getCurrentWeather };
+
+  const { data: weather } = useQuery({
+    queryKey: ["currentWeather", selectedOption?.Key],
+    queryFn: getCurrentWeather,
+    enabled: !isNaN(selectedOption?.Key),
+  });
+
+  return { weather };
 };
 export default useGetCurrentWeather;
