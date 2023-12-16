@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useHandleAutoCompleteSearch from "../../../../hooks/useHandleAutoCompleteSearch";
 import { Autocomplete, TextField } from "@mui/material";
+import styles from '../../Home.module.css'
 
 interface SearchProps {
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
@@ -10,8 +11,6 @@ interface SearchProps {
 interface Option {
   LocalizedName: string;
 }
-
-
 
 export const Search = ({ setSelectedOption, selectedOption }: SearchProps) => {
   const [input, setInput] = useState<string>("Tel Aviv");
@@ -25,23 +24,21 @@ export const Search = ({ setSelectedOption, selectedOption }: SearchProps) => {
   }, [data, setSelectedOption]);
 
   return (
-    <div>
-      <Autocomplete
-        options={(data || []) as Option[]}
-        getOptionLabel={(option) => option.LocalizedName===undefined? "" : option.LocalizedName}
-        style={{ width: 300 }}
-        value={selectedOption}
-        onChange={(e, selectedOption) => setSelectedOption(selectedOption)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search"
-            variant="filled"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        )}
-      />
-    </div>
+    <Autocomplete
+      options={(data || []) as Option[]}
+      getOptionLabel={(option) => option.LocalizedName === undefined ? "" : option.LocalizedName}
+      value={selectedOption}
+      className={styles.search}
+      onChange={(e, selectedOption) => setSelectedOption(selectedOption)}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Search"
+          variant="filled"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+      )}
+    />
   );
 };

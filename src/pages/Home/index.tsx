@@ -15,7 +15,6 @@ const Home = () => {
   const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
 
   const { state } = useLocation()
-console.log(fiveDaysWeather);
 
   useEffect(() => {
     setSelectedOption(state)
@@ -31,10 +30,7 @@ console.log(fiveDaysWeather);
   return (
     <Layout>
       <div className={styles.container}>
-        <div className={styles.search}>
-          <Search setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
-        </div>
-
+        <Search setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
         {(weather && fiveDaysWeather) && (
           <div className={styles.contentBox}>
             <div className={styles.boxHeader}>
