@@ -16,10 +16,16 @@ const useHandleAutoCompleteSearch = (input: string) => {
     }
   };
 
+  const checkInput = () => {
+    const englishRegex = /^[A-Za-z]+$/;
+    if (debounceValue !== "" && englishRegex.test(debounceValue)) return true;
+    return false;
+  };
+
   const { data } = useQuery({
     queryKey: ["autoComplete", debounceValue],
     queryFn: handleAutoCompleteSearch,
-    enabled: debounceValue !== "",
+    enabled: checkInput(),
   });
 
   return { data };
