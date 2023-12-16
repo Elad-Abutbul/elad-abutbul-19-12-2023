@@ -5,6 +5,8 @@
   align-items: center;
 }
 .search {
+  display: flex;
+  width: 50%;
   margin-top: 20px;
 }
 .contentBox {
@@ -19,11 +21,14 @@
   align-items: center;
   margin-bottom: 15px;
 }
+
 .currentDetailsAndX {
   display: flex;
   align-items: center;
+  align-items: center;
   gap: 30px;
 }
+
 .daysContainer {
   display: flex;
   flex-wrap: wrap;
@@ -37,4 +42,10 @@
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .boxHeader {
+    flex-direction: column;
+  }
 }
