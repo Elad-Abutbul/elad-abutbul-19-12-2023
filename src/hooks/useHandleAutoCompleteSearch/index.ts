@@ -1,6 +1,7 @@
-import { useQuery } from "react-query";
-import { searchService } from "../../services/search";
 import useDebounce from "../useDebounce";
+import { searchService } from "../../services/search";
+import { useQuery } from "react-query";
+import { enqueueSnackbar } from "notistack";
 
 const useHandleAutoCompleteSearch = (input: string) => {
   const { debounceValue } = useDebounce(input, 500);
@@ -10,7 +11,7 @@ const useHandleAutoCompleteSearch = (input: string) => {
       const res = await searchService.autoComplete(debounceValue);
       return res.data;
     } catch (error) {
-      console.log(error);
+      enqueueSnackbar(error.message, { variant: "error" });
       return [];
     }
   };

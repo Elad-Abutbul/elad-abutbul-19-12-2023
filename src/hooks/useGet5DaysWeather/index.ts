@@ -1,17 +1,18 @@
 import { weatherService } from "../../services/weather";
 import { useQuery } from "react-query";
+import { enqueueSnackbar } from "notistack";
 
-const useGet5DaysWeather = (selectedOption) => {
+const useGet5DaysWeather = (selectedOption: object) => {
   const get5DaysWeather = async () => {
     try {
-      const res = await weatherService.get5DaysWeather(selectedOption?.Key);
+      const res = await weatherService.get5DaysWeather(selectedOption.Key);
       return res.data;
     } catch (error) {
-      console.error(error);
+      enqueueSnackbar(error.message, { variant: "error" });
     }
   };
 
-  const { data:fiveDaysWeather } = useQuery({
+  const { data: fiveDaysWeather } = useQuery({
     queryKey: ["5DaysWeather", selectedOption?.Key],
     queryFn: get5DaysWeather,
     enabled: selectedOption?.Key !== undefined,
