@@ -11,7 +11,6 @@ export const weatherService = {
   get5DaysWeather: async (loactionKey: number) =>
     axiosInstance.get(
       `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${loactionKey}?apikey=${
-        import.meta.env.VITE_API_KEY
-      }`
+        import.meta.env.VITE_API_KEY}`
     ),
 };
