@@ -3,16 +3,7 @@ import useHandleAutoCompleteSearch from "../../../../hooks/useHandleAutoComplete
 import { Autocomplete, TextField } from "@mui/material";
 import styles from '../../Home.module.css'
 
-interface SearchProps {
-  setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
-  selectedOption: any;
-}
-
-interface Option {
-  LocalizedName: string;
-}
-
-export const Search = ({ setSelectedOption, selectedOption }: SearchProps) => {
+export const Search = ({ setSelectedOption, selectedOption }) => {
   const [input, setInput] = useState<string>("Tel Aviv");
   const { data } = useHandleAutoCompleteSearch(input);
 
@@ -25,7 +16,7 @@ export const Search = ({ setSelectedOption, selectedOption }: SearchProps) => {
 
   return (
     <Autocomplete
-      options={(data || []) as Option[]}
+      options={data || []}
       getOptionLabel={(option) => option.LocalizedName === undefined ? "" : option.LocalizedName}
       value={selectedOption}
       className={styles.search}
