@@ -1,23 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CurrentWeatherDetails, DaysFeed, DeleteSearch, FavoritesButton, Search } from './homeComp';
 import { Layout } from '../../common';
 import useGetCurrentWeather from '../../hooks/useGetCurrentWeather';
 import useGet5DaysWeather from '../../hooks/useGet5DaysWeather';
 import styles from "./Home.module.css";
+import { useLocation } from 'react-router';
 
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState({});
   const { weather } = useGetCurrentWeather(selectedOption);
   const { fiveDaysWeather, getDayOfWeek, convertToFahrenheitToCelsius } = useGet5DaysWeather(selectedOption);
-
   const tempF = weather && `${weather[0].Temperature.Imperial.Value} F°`;
   const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
 
+  const { state } = useLocation()
+console.log(fiveDaysWeather);
+
+  useEffect(() => {
+    setSelectedOption(state)
+  }, [])
+
   const favoriteObject = {
-    id: selectedOption?.Key,
-    name: selectedOption?.LocalizedName,
-    weather: { temperature: { tempC, tempF } }
+    Key: selectedOption?.Key,
+    LocalizedName: selectedOption?.LocalizedName,
+    weather: { temperature: { tempC, tempF } },
+    weatherText: weather && weather[0].WeatherText
   }
 
   return (
@@ -36,7 +44,6 @@ const Home = () => {
               </div>
               <FavoritesButton favoriteObject={favoriteObject} />
             </div>
-
             <DaysFeed days={fiveDaysWeather?.DailyForecasts} getDayOfWeek={getDayOfWeek} convertToFahrenheitToCelsius={convertToFahrenheitToCelsius} />
           </div>
         )}

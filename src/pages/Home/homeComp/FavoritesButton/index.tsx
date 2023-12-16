@@ -6,11 +6,11 @@ export const FavoritesButton = ({ favoriteObject }) => {
 
      const favorites = useSelector((state) => state.favorites.list);
      const dispatch = useDispatch();
-     const isFavorite = favorites.some((item) => item.id === favoriteObject?.id);
+     const isFavorite = favorites.some((item) => item.Key === favoriteObject?.Key);
 
      const handleToggleFavorite = () => {
           if (isFavorite) {
-               dispatch(removeFavorite({ id: favoriteObject?.id }));
+               dispatch(removeFavorite({ Key: favoriteObject?.Key }));
           } else {
                dispatch(addFavorite(favoriteObject));
           }
