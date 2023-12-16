@@ -9,7 +9,7 @@
 .logo {
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--background-color);
+  color: var(--navigate-text-color);
 }
 
 .links {
@@ -19,14 +19,14 @@
 
 .link {
   text-decoration: none;
-  color: var(--background-color);
+  color: var(--navigate-text-color);
   font-weight: bold;
   padding: 5px;
   transition: 0.3s;
   border-radius: 50%;
 
   &:hover {
-    color: #3498db;
+    color: var(--background-navigate-color);
     background-color: var(--background-color);
     border-radius: 5px;
   }
