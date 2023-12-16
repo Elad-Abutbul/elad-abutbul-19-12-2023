@@ -10,15 +10,14 @@ interface DaysProps {
                };
           };
      }>;
-     getDayOfWeek: (dateString: string) => string;
-     convertToFahrenheitToCelsius: (fahrenheit: number) => string;
+     changeDegrees: boolean
 }
 
-export const DaysFeed = ({ days, getDayOfWeek, convertToFahrenheitToCelsius }: DaysProps) => {
+export const DaysFeed = ({ days, changeDegrees }: DaysProps) => {
      return (
           <div className={styles.daysContainer}>
                {days?.map((day) => (
-                    <DayCard day={day} key={day.Date} getDayOfWeek={getDayOfWeek} convertToFahrenheitToCelsius={convertToFahrenheitToCelsius} />
+                    <DayCard day={day} key={day.Date} changeDegrees={changeDegrees} />
                ))}
           </div>
      );

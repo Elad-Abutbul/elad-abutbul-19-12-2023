@@ -1,7 +1,6 @@
 import { FaHeart } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../../../redux-tool-kit/slices/favorites';
-import styles from '../../Home.module.css';
 
 export const FavoritesButton = ({ favoriteObject }) => {
 
@@ -18,7 +17,7 @@ export const FavoritesButton = ({ favoriteObject }) => {
      };
 
      return (
-          <button onClick={handleToggleFavorite} className={styles.favoritesButton} style={{ borderColor: isFavorite ? 'red' : 'black' }}>
+          <button onClick={handleToggleFavorite} style={{ borderColor: isFavorite ? 'red' : 'black' }}>
                <FaHeart color={isFavorite ? 'red' : 'black'} /> Favorites
           </button>
      )
