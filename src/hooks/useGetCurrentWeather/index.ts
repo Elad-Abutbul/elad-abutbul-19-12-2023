@@ -1,5 +1,6 @@
 import { weatherService } from "../../services/weather";
 import { useQuery } from "react-query";
+import { enqueueSnackbar } from "notistack";
 
 const useGetCurrentWeather = (selectedOption) => {
   const getCurrentWeather = async () => {
@@ -7,7 +8,7 @@ const useGetCurrentWeather = (selectedOption) => {
       const res = await weatherService.getCurrentWeather(selectedOption?.Key);
       return res.data;
     } catch (error) {
-      console.error(error);
+      enqueueSnackbar(error.message, { variant: "error" });
     }
   };
 
