@@ -1,5 +1,13 @@
 :root {
-     --background-color: #d8d8d8;
-     --background-navigate-color: #3498db;
-     --primary-color: #333;
-   }
+  --background-color: #d8d8d8;
+  --background-navigate-color: #3498db;
+  --navigate-text-color: #fff;
+  --primary-color: #333;
+}
+
+body[data-theme="dark"] {
+  --background-color: #787878;
+  --primary-color: #d8d8d8;
+  --background-navigate-color: #0062a4;
+  --navigate-text-color: #111;
+}

@@ -8,6 +8,7 @@
   display: flex;
   width: 50%;
   margin-top: 20px;
+  background-color: white;
 }
 .contentBox {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -46,7 +47,7 @@
 
 .favoritesButton {
   padding: 5px;
-  background-color: white;
+  background-color:var(--background-color);
   border-radius: 10px;
   transition: 0.2s ease-in-out;
   &:hover {
