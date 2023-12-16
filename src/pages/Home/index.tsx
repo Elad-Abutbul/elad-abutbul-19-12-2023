@@ -9,15 +9,18 @@ import { useLocation } from 'react-router';
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState({});
+  const [changeDegrees, setChangeDegrees] = useState(false);
   const { weather } = useGetCurrentWeather(selectedOption);
-  const { fiveDaysWeather, getDayOfWeek, convertToFahrenheitToCelsius } = useGet5DaysWeather(selectedOption);
+  const { fiveDaysWeather } = useGet5DaysWeather(selectedOption);
   const tempF = weather && `${weather[0].Temperature.Imperial.Value} F°`;
   const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
 
   const { state } = useLocation()
 
   useEffect(() => {
-    setSelectedOption(state)
+    if (state !== null) {
+      setSelectedOption(state)
+    }
   }, [])
 
   const favoriteObject = {
@@ -36,11 +39,12 @@ const Home = () => {
             <div className={styles.boxHeader}>
               <div className={styles.currentDetailsAndX} >
                 <DeleteSearch setSelectedOption={setSelectedOption} />
-                <CurrentWeatherDetails cityName={selectedOption?.LocalizedName} tempC={tempC} />
+                <CurrentWeatherDetails cityName={selectedOption?.LocalizedName} tempC={tempC} tempF={tempF} changeDegrees={changeDegrees} />
               </div>
+              <button onClick={() => setChangeDegrees(!changeDegrees)}>change degrees</button>
               <FavoritesButton favoriteObject={favoriteObject} />
             </div>
-            <DaysFeed days={fiveDaysWeather?.DailyForecasts} getDayOfWeek={getDayOfWeek} convertToFahrenheitToCelsius={convertToFahrenheitToCelsius} />
+            <DaysFeed days={fiveDaysWeather?.DailyForecasts} changeDegrees={changeDegrees} />
           </div>
         )}
 

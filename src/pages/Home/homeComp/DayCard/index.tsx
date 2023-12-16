@@ -1,3 +1,4 @@
+import useGet5DaysWeather from '../../../../hooks/useGet5DaysWeather';
 import styles from '../../Home.module.css';
 interface DayCardProps {
      day: {
@@ -8,15 +9,17 @@ interface DayCardProps {
                };
           };
      };
-     getDayOfWeek: (dateString: string) => string;
-     convertToFahrenheitToCelsius: (fahrenheit: number) => string;
+     changeDegrees: boolean
 }
 
-export const DayCard = ({ day, getDayOfWeek, convertToFahrenheitToCelsius }: DayCardProps) => {
+export const DayCard = ({ day, changeDegrees }: DayCardProps) => {
+     console.log(day?.Temperature);
+
+     const { getDayOfWeek, convertToFahrenheitToCelsius } = useGet5DaysWeather();
      return (
           <div key={day.Date} className={styles.day}>
                <h2>{getDayOfWeek(day.Date)}</h2>
-               <h3>{convertToFahrenheitToCelsius(day?.Temperature.Maximum.Value)}</h3>
+               <h3>{changeDegrees ? `${day?.Temperature.Maximum.Value} F°` : convertToFahrenheitToCelsius(day?.Temperature.Maximum.Value)}</h3>
           </div>
      )
 }

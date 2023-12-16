@@ -8,3 +8,12 @@ body {
   background-color: var(--background-color);
   transition:0.3s ease;
 }
+button{
+  padding: 5px;
+  background-color:var(--background-color);
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }}
