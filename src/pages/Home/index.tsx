@@ -34,6 +34,8 @@ const Home = () => {
     <Layout>
       <div className={styles.container}>
         <Search setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
+        <div>
+        </div>
         {(weather && fiveDaysWeather) && (
           <div className={styles.contentBox}>
             <div className={styles.boxHeader}>

@@ -7,6 +7,7 @@ body {
   padding: 0;
   background-color: var(--background-color);
   transition:0.3s ease;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 button{
   padding: 5px;

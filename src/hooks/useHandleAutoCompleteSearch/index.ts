@@ -17,9 +17,8 @@ const useHandleAutoCompleteSearch = (input: string) => {
   };
 
   const checkInput = () => {
-    const englishRegex = /^[A-Za-z]+$/;
-    if (debounceValue !== "" && englishRegex.test(debounceValue)) return true;
-    return false;
+    const englishRegex = /^[A-Za-z\s]*$/;
+    return debounceValue !== "" && englishRegex.test(debounceValue);
   };
 
   const { data } = useQuery({
