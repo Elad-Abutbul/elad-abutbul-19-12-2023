@@ -1,4 +1,4 @@
-import { Day } from "../Day";
+import { DayCard } from "../DayCard";
 import styles from '../../Home.module.css';
 
 interface DaysProps {
@@ -18,7 +18,7 @@ export const DaysFeed = ({ days, getDayOfWeek, convertToFahrenheitToCelsius }: D
      return (
           <div className={styles.daysContainer}>
                {days?.map((day) => (
-                    <Day day={day} key={day.Date} getDayOfWeek={getDayOfWeek} convertToFahrenheitToCelsius={convertToFahrenheitToCelsius} />
+                    <DayCard day={day} key={day.Date} getDayOfWeek={getDayOfWeek} convertToFahrenheitToCelsius={convertToFahrenheitToCelsius} />
                ))}
           </div>
      );
