@@ -1,12 +1,10 @@
-import { useSelector } from 'react-redux';
+import { FavoritesFeed } from './favoritesComp';
 import { Layout } from '../../common'
-import './Favorites.module.css'
 
 const Favorites = () => {
-     const favorites = useSelector((state) => state.favorites.list);
      return (
           <Layout>
-               <div>{favorites.map((favorite) => (console.log(favorite)))}</div>
+               <FavoritesFeed />
           </Layout>
      )
 }

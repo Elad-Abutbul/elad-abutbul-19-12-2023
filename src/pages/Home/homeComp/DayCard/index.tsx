@@ -1,5 +1,5 @@
 import styles from '../../Home.module.css';
-interface DayProps {
+interface DayCardProps {
      day: {
           Date: string;
           Temperature: {
@@ -12,7 +12,7 @@ interface DayProps {
      convertToFahrenheitToCelsius: (fahrenheit: number) => string;
 }
 
-export const Day = ({ day, getDayOfWeek, convertToFahrenheitToCelsius }: DayProps) => {
+export const DayCard = ({ day, getDayOfWeek, convertToFahrenheitToCelsius }: DayCardProps) => {
      return (
           <div key={day.Date} className={styles.day}>
                <h2>{getDayOfWeek(day.Date)}</h2>
