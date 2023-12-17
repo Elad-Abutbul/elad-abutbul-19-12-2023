@@ -29,6 +29,6 @@ export const weatherService = {
     return dayOfWeek;
   },
   convertToFahrenheitToCelsius: (fahrenheit: number) => {
-    return `${(((fahrenheit - 32) * 5) / 9).toFixed()} C°`;
+    return (((fahrenheit - 32) * 5) / 9).toFixed();
   },
 };

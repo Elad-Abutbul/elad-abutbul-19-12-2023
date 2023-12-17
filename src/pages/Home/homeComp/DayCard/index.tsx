@@ -1,3 +1,4 @@
+import { TEMPERATURE } from '../../../../constants';
 import { weatherService } from '../../../../services';
 import styles from '../../Home.module.css';
 interface DayCardProps {
@@ -17,7 +18,7 @@ export const DayCard = ({ day, changeDegrees }: DayCardProps) => {
      return (
           <div key={day.Date} className={styles.day}>
                <h2>{getDayOfWeek(day.Date)}</h2>
-               <h3>{changeDegrees ? `${day?.Temperature.Maximum.Value} F°` : convertToFahrenheitToCelsius(day?.Temperature.Maximum.Value)}</h3>
+               <h3>{changeDegrees ? `${day?.Temperature.Maximum.Value} ${TEMPERATURE.F}` : `${convertToFahrenheitToCelsius(day?.Temperature.Maximum.Value)} ${TEMPERATURE.C}`}</h3>
           </div>
      )
 }

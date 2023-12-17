@@ -12,9 +12,6 @@ const Home = () => {
   const { data: weather } = useWeather(selectedOption.Key, weatherService.getCurrentWeather)
   const { data: fiveDaysWeather } = useWeather(selectedOption.Key, weatherService.get5DaysWeather)
 
-  const tempF = weather && `${weather[0].Temperature.Imperial.Value} F°`;
-  const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
-
   const { state } = useLocation()
 
   useEffect(() => {
@@ -26,8 +23,8 @@ const Home = () => {
   const favoriteObject = {
     Key: selectedOption?.Key,
     LocalizedName: selectedOption?.LocalizedName,
-    weather: { temperature: { tempC, tempF } },
-    weatherText: weather && weather[0].WeatherText
+    temperature: fiveDaysWeather?.DailyForecasts[0].Temperature.Maximum.Value,
+    weatherText: weather && weather[0].WeatherText,
   }
 
   return (
@@ -41,7 +38,7 @@ const Home = () => {
             <div className={styles.boxHeader}>
               <div className={styles.currentDetailsAndX} >
                 <DeleteSearch setSelectedOption={setSelectedOption} />
-                <CurrentWeatherDetails cityName={selectedOption?.LocalizedName} tempC={tempC} tempF={tempF} changeDegrees={changeDegrees} />
+                <CurrentWeatherDetails cityName={selectedOption?.LocalizedName} temperature={fiveDaysWeather?.DailyForecasts[0].Temperature.Maximum.Value} changeDegrees={changeDegrees} />
               </div>
               <button onClick={() => setChangeDegrees(!changeDegrees)}>change degrees</button>
               <FavoritesButton favoriteObject={favoriteObject} />
