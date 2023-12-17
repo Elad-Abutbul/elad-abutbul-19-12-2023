@@ -13,8 +13,6 @@ interface DayCardProps {
 }
 
 export const DayCard = ({ day, changeDegrees }: DayCardProps) => {
-     console.log(day?.Temperature);
-
      const { getDayOfWeek, convertToFahrenheitToCelsius } = useGet5DaysWeather();
      return (
           <div key={day.Date} className={styles.day}>

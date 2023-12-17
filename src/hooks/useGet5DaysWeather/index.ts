@@ -2,7 +2,11 @@ import { weatherService } from "../../services/weather";
 import { useQuery } from "react-query";
 import { enqueueSnackbar } from "notistack";
 
-const useGet5DaysWeather = (selectedOption: object = {}) => {
+interface SelectedOption {
+  Key: string;
+}
+
+const useGet5DaysWeather = (selectedOption: SelectedOption) => {
   const get5DaysWeather = async () => {
     try {
       const res = await weatherService.get5DaysWeather(selectedOption.Key);
@@ -39,4 +43,5 @@ const useGet5DaysWeather = (selectedOption: object = {}) => {
 
   return { fiveDaysWeather, getDayOfWeek, convertToFahrenheitToCelsius };
 };
+
 export default useGet5DaysWeather;

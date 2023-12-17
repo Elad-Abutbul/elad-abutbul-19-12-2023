@@ -1,16 +1,17 @@
 import axiosInstance from "../axiosConfing";
 
 export const weatherService = {
-  getCurrentWeather: async (loactionKey: number) =>
+  getCurrentWeather: async (loactionKey: string) =>
     axiosInstance.get(
       `/currentconditions/v1/${loactionKey}?apikey=${
         import.meta.env.VITE_API_KEY
       }`
     ),
 
-  get5DaysWeather: async (loactionKey: number) =>
+  get5DaysWeather: async (loactionKey: string) =>
     axiosInstance.get(
       `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${loactionKey}?apikey=${
-        import.meta.env.VITE_API_KEY}`
+        import.meta.env.VITE_API_KEY
+      }`
     ),
 };

@@ -1,8 +1,10 @@
 import { weatherService } from "../../services/weather";
 import { useQuery } from "react-query";
 import { enqueueSnackbar } from "notistack";
-
-const useGetCurrentWeather = (selectedOption) => {
+interface SelectedOption {
+  Key: string;
+}
+const useGetCurrentWeather = (selectedOption: SelectedOption) => {
   const getCurrentWeather = async () => {
     try {
       const res = await weatherService.getCurrentWeather(selectedOption?.Key);

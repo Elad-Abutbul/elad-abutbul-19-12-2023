@@ -12,8 +12,8 @@ interface FavoriteCardProps {
           LocalizedName: string;
           weather: {
                temperature: {
-                    tempC: string;
-                    tempF: string;
+                    tempC: number;
+                    tempF: number;
                };
           };
           weatherText: string;
@@ -29,7 +29,7 @@ export const FavoriteCard = ({ favorite }: FavoriteCardProps) => {
      const tempC = favorite.weather.temperature.tempC;
      const tempF = favorite.weather.temperature.tempF;
 
-     const handleToggleDegrees = (e) => {
+     const handleToggleDegrees = (e: React.MouseEvent<HTMLButtonElement>) => {
           e.stopPropagation();
           setChangeDegrees(!changeDegrees);
      };
@@ -60,4 +60,3 @@ export const FavoriteCard = ({ favorite }: FavoriteCardProps) => {
           </div>
      );
 };
-
