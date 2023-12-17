@@ -14,6 +14,7 @@ const Home = () => {
   const [changeDegrees, setChangeDegrees] = useState(false);
   const { weather } = useGetCurrentWeather(selectedOption);
   const { fiveDaysWeather } = useGet5DaysWeather(selectedOption);
+  
   const tempF = weather && `${weather[0].Temperature.Imperial.Value} F°`;
   const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
 

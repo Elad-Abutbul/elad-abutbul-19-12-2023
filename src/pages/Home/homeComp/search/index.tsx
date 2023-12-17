@@ -4,7 +4,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import styles from '../../Home.module.css';
 
 interface SearchProps {
-  setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
+  setSelectedOption: CallableFunction;
   selectedOption: Option
 }
 

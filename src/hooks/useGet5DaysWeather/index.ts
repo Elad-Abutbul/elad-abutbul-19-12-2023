@@ -8,7 +8,6 @@ interface SelectedOption {
 
 const useGet5DaysWeather = (selectedOption: SelectedOption) => {
   const get5DaysWeather = async () => {
-    debugger
     if (selectedOption.Key !== "") {
       try {
         const res = await weatherService.get5DaysWeather(selectedOption.Key);
