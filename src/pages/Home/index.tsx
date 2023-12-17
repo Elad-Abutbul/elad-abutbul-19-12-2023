@@ -3,9 +3,8 @@ import { CurrentWeatherDetails, DaysFeed, DeleteSearch, FavoritesButton, Search 
 import { Layout } from '../../common';
 import useGetCurrentWeather from '../../hooks/useGetCurrentWeather';
 import useGet5DaysWeather from '../../hooks/useGet5DaysWeather';
-import styles from "./Home.module.css";
 import { useLocation } from 'react-router';
-
+import styles from "./Home.module.css";
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState({});

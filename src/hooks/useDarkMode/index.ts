@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { localSorageService } from "../../services";
 
 const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [isDark, setIsDark] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const applyTheme = (theme: string) => {
     document.querySelector("body")?.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    localSorageService.setItem("theme", theme);
   };
 
   const changeMode = () => {
@@ -16,7 +17,7 @@ const useDarkMode = () => {
   };
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
+    const storedTheme = localSorageService.getItem("theme");
     setIsDark(storedTheme === "dark");
     setLoading(false);
   }, []);
