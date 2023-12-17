@@ -10,7 +10,7 @@ const useHandleAutoCompleteSearch = (input: string) => {
     try {
       const res = await searchService.autoComplete(debounceValue);
       return res.data;
-    } catch (error) {
+    } catch (error:any) {
       enqueueSnackbar(error.message, { variant: "error" });
       return [];
     }

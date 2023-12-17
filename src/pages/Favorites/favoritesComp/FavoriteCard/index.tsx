@@ -4,30 +4,14 @@ import { removeFavorite } from '../../../../redux-tool-kit/slices/favorites';
 import { ROUTES_URLS } from '../../../../constants';
 import { FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
+import { Favorite } from "../../../../types";
 import styles from '../../Favorites.module.css';
 
-interface FavoriteCardProps {
-     favorite: {
-          Key: string;
-          LocalizedName: string;
-          weather: {
-               temperature: {
-                    tempC: number;
-                    tempF: number;
-               };
-          };
-          weatherText: string;
-     };
-}
-
-export const FavoriteCard = ({ favorite }: FavoriteCardProps) => {
+export const FavoriteCard = ({ LocalizedName, weatherText, Key, weather: { temperature: { tempC, tempF } } }: Favorite) => {
      const dispatch = useDispatch();
      const [isHovered, setIsHovered] = useState(false);
      const [changeDegrees, setChangeDegrees] = useState(false);
      const navigate = useNavigate();
-
-     const tempC = favorite.weather.temperature.tempC;
-     const tempF = favorite.weather.temperature.tempF;
 
      const handleToggleDegrees = (e: React.MouseEvent<HTMLButtonElement>) => {
           e.stopPropagation();
@@ -38,16 +22,16 @@ export const FavoriteCard = ({ favorite }: FavoriteCardProps) => {
           <div className={styles.containerCard}>
                <div
                     className={styles.favorite}
-                    onClick={() => navigate(ROUTES_URLS.HOME, { state: favorite })}
+                    onClick={() => navigate(ROUTES_URLS.HOME, { state: { LocalizedName, weatherText, Key, weather: { temperature: { tempC, tempF } } } })}
                >
-                    <h2>{favorite.LocalizedName}</h2>
+                    <h2>{LocalizedName}</h2>
                     <h2>{changeDegrees ? tempC : tempF}</h2>
-                    <h2>{favorite.weatherText}</h2>
+                    <h2>{weatherText}</h2>
                     <button onClick={handleToggleDegrees}>change degrees</button>
                </div>
                <div
                     className={styles.delete}
-                    onClick={() => dispatch(removeFavorite({ Key: favorite.Key }))}
+                    onClick={() => dispatch(removeFavorite({ Key }))}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                >
