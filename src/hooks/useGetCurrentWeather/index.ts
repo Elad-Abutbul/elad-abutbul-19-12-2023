@@ -6,6 +6,7 @@ interface SelectedOption {
 }
 const useGetCurrentWeather = (selectedOption: SelectedOption) => {
   const getCurrentWeather = async () => {
+    if (selectedOption.Key === "") return;
     try {
       const res = await weatherService.getCurrentWeather(selectedOption?.Key);
       return res.data;
