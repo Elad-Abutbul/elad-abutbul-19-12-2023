@@ -3,9 +3,13 @@
   --background-navigate-color: #3498db;
   --navigate-text-color: #fff;
   --primary-color: #333;
+  --card: #313131;
+  --primary-text-card: #d6d6d6;
 }
 
 body[data-theme="dark"] {
+  --card: #a0a0a0;
+  --primary-text-card: #232222;
   --background-color: #787878;
   --primary-color: #d8d8d8;
   --background-navigate-color: #0062a4;
