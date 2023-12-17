@@ -14,4 +14,21 @@ export const weatherService = {
         import.meta.env.VITE_API_KEY
       }`
     ),
+  getDayOfWeek: (dateString: string) => {
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const date = new Date(dateString);
+    const dayOfWeek = daysOfWeek[date.getDay()];
+    return dayOfWeek;
+  },
+  convertToFahrenheitToCelsius: (fahrenheit: number) => {
+    return (((fahrenheit - 32) * 5) / 9).toFixed();
+  },
 };

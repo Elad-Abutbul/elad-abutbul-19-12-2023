@@ -15,12 +15,12 @@ export const FavoritesFeed = () => {
   return (
     <div className={stlyes.container}>
       {favorites.length !== 0 ? (
-        favorites.map(({ LocalizedName, weatherText, Key, weather }) => (
+        favorites.map(({ LocalizedName, weatherText, Key, temperature }) => (
           <FavoriteCard
             LocalizedName={LocalizedName}
             weatherText={weatherText}
             Key={Key}
-            weather={weather}
+            temperature={temperature}
           />
         )
         )

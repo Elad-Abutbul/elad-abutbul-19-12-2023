@@ -3,12 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface FavoriteItem {
   Key: string;
   LocalizedName: string;
-  weather: {
-    temperature: {
-      tempC: number;
-      tempF: number;
-    };
-  };
+  temperature: string;
   weatherText: string;
 }
 

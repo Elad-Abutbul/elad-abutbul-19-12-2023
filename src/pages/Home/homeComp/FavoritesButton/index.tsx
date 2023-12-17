@@ -13,7 +13,7 @@ interface FavoriteObjectProps {
      favoriteObject: {
           Key: string;
           LocalizedName: string;
-          weather: { temperature: { tempC: number; tempF: number } };
+          temperature: string
           weatherText: string;
      }
 }
