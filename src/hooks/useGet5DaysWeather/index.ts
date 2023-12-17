@@ -8,12 +8,14 @@ interface SelectedOption {
 
 const useGet5DaysWeather = (selectedOption: SelectedOption) => {
   const get5DaysWeather = async () => {
-    if (selectedOption.Key === "") return;
-    try {
-      const res = await weatherService.get5DaysWeather(selectedOption.Key);
-      return res.data;
-    } catch (error: any) {
-      enqueueSnackbar(error.message, { variant: "error" });
+    debugger
+    if (selectedOption.Key !== "") {
+      try {
+        const res = await weatherService.get5DaysWeather(selectedOption.Key);
+        return res.data;
+      } catch (error: any) {
+        enqueueSnackbar(error.message, { variant: "error" });
+      }
     }
   };
 

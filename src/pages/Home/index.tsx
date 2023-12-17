@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { CurrentWeatherDetails, DaysFeed, DeleteSearch, FavoritesButton, Search } from './homeComp';
+import { CurrentWeatherDetails, DeleteSearch, FavoritesButton } from './homeComp';
 import { Layout } from '../../common';
 import useGetCurrentWeather from '../../hooks/useGetCurrentWeather';
 import useGet5DaysWeather from '../../hooks/useGet5DaysWeather';
 import { useLocation } from 'react-router';
 import styles from "./Home.module.css";
+import { Search } from './homeComp/Search';
+import { DaysFeed } from './homeComp/DaysFeed';
 
 
 const Home = () => {
