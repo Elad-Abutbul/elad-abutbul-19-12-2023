@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useHandleAutoCompleteSearch from "../../../../hooks/useHandleAutoCompleteSearch";
+import useHandleAutoCompleteSearch from "../../../../hooks/useSearch";
 import { Autocomplete, TextField } from "@mui/material";
 import styles from '../../Home.module.css';
 
@@ -14,22 +14,22 @@ interface Option {
 
 export const Search = ({ setSelectedOption, selectedOption }: SearchProps) => {
   const [input, setInput] = useState<string>("Tel Aviv");
-  const { data } = useHandleAutoCompleteSearch(input);
+  const { data:searchList } = useHandleAutoCompleteSearch(input);
 
   useEffect(() => {
-    const defaultOption = data?.find((option: Option) => option.LocalizedName === "Tel Aviv");
+    const defaultOption = searchList?.find((option: Option) => option.LocalizedName === "Tel Aviv");
     if (defaultOption) {
       setSelectedOption(defaultOption);
     }
-  }, [data, setSelectedOption]);
+  }, [searchList, setSelectedOption]);
 
   return (
     <Autocomplete
-      options={data || []}
+      options={searchList || []}
       getOptionLabel={(option: Option) => (option.LocalizedName || '')}
       value={selectedOption}
       className={styles.search}
-      onChange={(_,selectedOption) => setSelectedOption(selectedOption)}
+      onChange={(_, selectedOption) => setSelectedOption(selectedOption)}
       renderInput={(params) => (
         <TextField
           {...params}

@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { CurrentWeatherDetails, DaysFeed, DeleteSearch, FavoritesButton, Search } from './homeComp';
+import useWeather from '../../hooks/useWeather';
 import { Layout } from '../../common';
-import useGetCurrentWeather from '../../hooks/useGetCurrentWeather';
-import useGet5DaysWeather from '../../hooks/useGet5DaysWeather';
+import { weatherService } from '../../services';
 import { useLocation } from 'react-router';
 import styles from "./Home.module.css";
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState({ Key: "", LocalizedName: "" });
   const [changeDegrees, setChangeDegrees] = useState(false);
-  const { weather } = useGetCurrentWeather(selectedOption);
-  const { fiveDaysWeather } = useGet5DaysWeather(selectedOption);
-  
+  const { data: weather } = useWeather(selectedOption.Key, weatherService.getCurrentWeather)
+  const { data: fiveDaysWeather } = useWeather(selectedOption.Key, weatherService.get5DaysWeather)
+
   const tempF = weather && `${weather[0].Temperature.Imperial.Value} F°`;
   const tempC = weather && `${weather[0].Temperature.Metric.Value} C°`;
 

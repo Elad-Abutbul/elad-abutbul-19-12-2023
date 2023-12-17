@@ -1,4 +1,4 @@
-import useGet5DaysWeather from '../../../../hooks/useGet5DaysWeather';
+import { weatherService } from '../../../../services';
 import styles from '../../Home.module.css';
 interface DayCardProps {
      day: {
@@ -13,7 +13,7 @@ interface DayCardProps {
 }
 
 export const DayCard = ({ day, changeDegrees }: DayCardProps) => {
-     const { getDayOfWeek, convertToFahrenheitToCelsius } = useGet5DaysWeather({Key:'123'});
+     const { getDayOfWeek, convertToFahrenheitToCelsius } = weatherService
      return (
           <div key={day.Date} className={styles.day}>
                <h2>{getDayOfWeek(day.Date)}</h2>
