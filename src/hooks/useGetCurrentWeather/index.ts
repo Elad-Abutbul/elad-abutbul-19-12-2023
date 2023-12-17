@@ -1,4 +1,4 @@
-import { weatherService } from "../../services/weather";
+import { weatherService } from "../../services";
 import { useQuery } from "react-query";
 import { enqueueSnackbar } from "notistack";
 interface SelectedOption {

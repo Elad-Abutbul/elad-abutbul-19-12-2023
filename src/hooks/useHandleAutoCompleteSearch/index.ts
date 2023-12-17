@@ -1,5 +1,5 @@
 import useDebounce from "../useDebounce";
-import { searchService } from "../../services/search";
+import { searchService } from "../../services";
 import { useQuery } from "react-query";
 import { enqueueSnackbar } from "notistack";
 
