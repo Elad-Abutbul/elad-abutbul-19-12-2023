@@ -5,8 +5,8 @@ interface FavoriteItem {
   LocalizedName: string;
   weather: {
     temperature: {
-      tempC: string;
-      tempF: string;
+      tempC: number;
+      tempF: number;
     };
   };
   weatherText: string;

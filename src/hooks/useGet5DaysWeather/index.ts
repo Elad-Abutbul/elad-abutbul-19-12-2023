@@ -11,7 +11,7 @@ const useGet5DaysWeather = (selectedOption: SelectedOption) => {
     try {
       const res = await weatherService.get5DaysWeather(selectedOption.Key);
       return res.data;
-    } catch (error:any) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: "error" });
     }
   };

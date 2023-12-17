@@ -9,7 +9,7 @@ const useGetCurrentWeather = (selectedOption: SelectedOption) => {
     try {
       const res = await weatherService.getCurrentWeather(selectedOption?.Key);
       return res.data;
-    } catch (error:any) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: "error" });
     }
   };

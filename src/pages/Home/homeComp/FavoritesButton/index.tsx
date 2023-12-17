@@ -2,7 +2,14 @@ import { FaHeart } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../../../redux-tool-kit/slices/favorites';
 
-
+interface FavoriteObjectProps {
+     favoriteObject: {
+          Key: string;
+          LocalizedName: string;
+          weather: { temperature: { tempC: number; tempF: number } };
+          weatherText: string;
+     }
+}
 
 interface RootState {
      favorites: {

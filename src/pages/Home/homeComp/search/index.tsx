@@ -5,12 +5,14 @@ import styles from '../../Home.module.css';
 
 interface SearchProps {
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
-  selectedOption: object;
+  selectedOption: Option
 }
+
 interface Option {
   LocalizedName: string
 }
-export const Search: React.FC<SearchProps> = ({ setSelectedOption, selectedOption }) => {
+
+export const Search = ({ setSelectedOption, selectedOption }: SearchProps) => {
   const [input, setInput] = useState<string>("Tel Aviv");
   const { data } = useHandleAutoCompleteSearch(input);
 
@@ -24,10 +26,10 @@ export const Search: React.FC<SearchProps> = ({ setSelectedOption, selectedOptio
   return (
     <Autocomplete
       options={data || []}
-      getOptionLabel={(option: Option) => (option.LocalizedName === undefined ? "" : option.LocalizedName)}
+      getOptionLabel={(option: Option) => (option.LocalizedName || '')}
       value={selectedOption}
       className={styles.search}
-      onChange={(e, selectedOption) => setSelectedOption(selectedOption)}
+      onChange={(_,selectedOption) => setSelectedOption(selectedOption)}
       renderInput={(params) => (
         <TextField
           {...params}

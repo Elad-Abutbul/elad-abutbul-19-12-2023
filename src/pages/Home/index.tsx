@@ -6,8 +6,9 @@ import useGet5DaysWeather from '../../hooks/useGet5DaysWeather';
 import { useLocation } from 'react-router';
 import styles from "./Home.module.css";
 
+
 const Home = () => {
-  const [selectedOption, setSelectedOption] = useState({});
+  const [selectedOption, setSelectedOption] = useState({ Key: "", LocalizedName: "" });
   const [changeDegrees, setChangeDegrees] = useState(false);
   const { weather } = useGetCurrentWeather(selectedOption);
   const { fiveDaysWeather } = useGet5DaysWeather(selectedOption);
