@@ -1,6 +1,5 @@
 import useDebounce from "../useDebounce";
-import { searchService } from "../../services";
-import { weatherApi } from "../../apiFunctions";
+import { searchService, weatherService } from "../../services";
 import { useQuery } from "react-query";
 
 const useSearch = (input: string) => {
@@ -8,7 +7,8 @@ const useSearch = (input: string) => {
 
   const { data } = useQuery({
     queryKey: ["autoComplete", debounceValue],
-    queryFn: () => weatherApi(debounceValue, searchService.search),
+    queryFn: () =>
+      weatherService.weatherApi(debounceValue, searchService.search),
     enabled: searchService.checkSearchInput(debounceValue),
   });
 

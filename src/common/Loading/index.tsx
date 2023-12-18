@@ -1,6 +1,4 @@
 
-export const Loading = () => {
-  return (
-    <div>Loading ..</div>
-  )
-}
+export const Loading = () => (
+  <div>Loading ..</div>
+)

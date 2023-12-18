@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
-import { weatherApi } from "../../apiFunctions";
+import { weatherService } from "../../services";
 
 const useWeather = (
   locationKey: string,
-  weatherService: (loactionKey: string) => Promise<any>
+  serviceWeather: (loactionKey: string) => Promise<any>
 ) => {
   const { data } = useQuery({
-    queryFn: () => weatherApi(locationKey, weatherService),
-    queryKey: [weatherService.name, locationKey],
+    queryFn: () => weatherService.weatherApi(locationKey, serviceWeather),
+    queryKey: [serviceWeather.name, locationKey],
     enabled: locationKey !== "",
   });
   return { data };
