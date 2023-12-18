@@ -25,7 +25,7 @@ export const FavoriteCard = ({ LocalizedName, weatherText, Key, temperature }: F
                     className={styles.favorite}
                     onClick={() => navigate(ROUTES_URLS.HOME, { state: { LocalizedName, weatherText, Key, temperature } })}>
                     <h2>{LocalizedName}</h2>
-                    <h2>{changeDegrees ? `${temperature} ${TEMPERATURE.C}` : `${weatherService.convertToFahrenheitToCelsius(temperature)} ${TEMPERATURE.C}`}</h2>
+                    <h2>{changeDegrees ? `${temperature} ${TEMPERATURE.F}` : `${weatherService.convertToFahrenheitToCelsius(temperature)} ${TEMPERATURE.C}`}</h2>
                     <h2>{weatherText}</h2>
                     <button onClick={handleToggleDegrees}>change degrees</button>
                </div>

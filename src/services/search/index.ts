@@ -1,3 +1,4 @@
+import { SEARCH } from "../../constants";
 import axiosInstance from "../axiosConfing";
 
 export const searchService = {
@@ -9,7 +10,6 @@ export const searchService = {
     ),
 
   checkSearchInput: (debounceValue: string) => {
-    const englishRegex = /^[A-Za-z\s]*$/;
-    return debounceValue !== "" && englishRegex.test(debounceValue);
+    return debounceValue !== "" && SEARCH.ENGLISH_REGEX.test(debounceValue);
   },
 };
