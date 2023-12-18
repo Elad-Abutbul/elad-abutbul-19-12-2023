@@ -1,16 +1,11 @@
 import { FavoriteCard } from "..";
 import { useSelector } from "react-redux";
-import { Favorite } from "../../../../types";
+import { Favorites } from "../../../../types";
 import stlyes from '../../Favorites.module.css';
 
-interface RootState {
-  favorites: {
-    list: Favorite[];
-  };
-}
 
 export const FavoritesFeed = () => {
-  const favorites = useSelector((state: RootState) => state.favorites.list);
+  const favorites = useSelector((state: Favorites) => state.favorites.list);
 
   return (
     <div className={stlyes.container}>
