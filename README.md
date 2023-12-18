@@ -3,9 +3,6 @@
 Welcome to the Weather App repository! This React-based weather application to check the current weather, forecast for the next 5 days, and manage their favorite cities.
 
 Technologies Used
-
-
-
 React
 TypeScript
 Axios
@@ -28,7 +25,7 @@ Favorite Page: A dedicated page to view, manage, and customize your list of favo
 
 Dark Mode: Customize your visual experience with a dark mode option.
 
-video: [https://github.com/Elad-Abutbul/elad-abutbul-19-12-2023/assets/123316195/01437af7-3b09-492e-a5b3-d672c8692027](https://github.com/Elad-Abutbul/elad-abutbul-19-12-2023/assets/123316195/dafca2bf-5388-4096-9182-98f24398516e)
+video: https://github.com/Elad-Abutbul/elad-abutbul-19-12-2023/assets/123316195/26a9248e-d971-4538-bf77-dcc5186b2be0
 
 Home Page:
 ![image](https://github.com/Elad-Abutbul/elad-abutbul-19-12-2023/assets/123316195/de72a989-bd4c-4998-a464-fb3ffeff8c65)
