@@ -10,8 +10,8 @@ const Home = () => {
   const [selectedOption, setSelectedOption] = useState({ Key: "", LocalizedName: "" });
   const [changeDegrees, setChangeDegrees] = useState(false);
 
-  const { data: weather } = useWeather(selectedOption.Key, weatherService.getCurrentWeather)
-  const { data: fiveDaysWeather } = useWeather(selectedOption.Key, weatherService.get5DaysWeather)
+  const { data: weather } = useWeather(selectedOption?.Key, weatherService.getCurrentWeather)
+  const { data: fiveDaysWeather } = useWeather(selectedOption?.Key, weatherService.get5DaysWeather)
 
   const { state } = useLocation()
 
