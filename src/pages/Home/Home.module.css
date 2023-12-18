@@ -18,9 +18,11 @@
 
 .boxHeader {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  gap: 20px;
 }
 
 .currentDetailsAndX {
@@ -34,7 +36,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5%;
+  gap: 30px;
 }
 .day {
   display: flex;
@@ -47,8 +49,4 @@
   color: var(--primary-text-card);
 }
 
-@media (max-width: 768px) {
-  .boxHeader {
-    flex-direction: column;
-  }
-}
+
