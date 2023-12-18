@@ -31,4 +31,12 @@ export const weatherService = {
   convertToFahrenheitToCelsius: (fahrenheit: number) => {
     return (((fahrenheit - 32) * 5) / 9).toFixed();
   },
+
+  weatherApi: async (
+    locationKey: string,
+    service: (loactionKey: string) => Promise<any>
+  ) => {
+    const res = await service(locationKey);
+    return res.data;
+  },
 };
